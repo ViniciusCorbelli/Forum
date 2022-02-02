@@ -26,6 +26,8 @@
 <body class="body-site">
     @include('includes.navbar')
 
+    @include('includes.chat')
+
     @yield('content')
 
     @include('includes.footer')

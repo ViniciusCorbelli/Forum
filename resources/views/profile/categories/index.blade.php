@@ -1,8 +1,8 @@
 @extends('profile.layouts.app')
 
 @section('content')
-    @component('profile.components.table')
-        @slot('create', route('profile.categories.create'))
+@component('profile.components.table')
+@slot('create', route('profile.categories.create'))
             @slot('titulo', 'Categorias')
                 @slot('head')
                     <th>Nome</th>

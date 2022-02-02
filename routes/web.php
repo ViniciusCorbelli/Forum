@@ -45,7 +45,8 @@ Route::middleware('auth')->group(function () {
         ->names('profile.categories')->middleware('Admin');
 
     Route::resource('/posts', 'PostController')
-        ->names('profile.posts')->middleware('Post');
+        ->names('profile.posts');
+    Route::put('/posts/active/{post}', 'PostController@active')->name('profile.posts.active')->middleware('Admin');
 
     Route::put('/comments/{post}', 'CommentController@store')->name('blog.comment.store');
     Route::get('/comments/{comment}/create', 'CommentController@create')->name('profile.comments.create');

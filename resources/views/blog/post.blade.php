@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@php
+if (!$post->active) {
+    if (!(Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador') || Auth::user()->access == 'Moderador')) {
+        echo "Você não possui acesso à está pagina";
+        exit;
+    }
+}
+@endphp
+
 @section('content')
     <div class="container">
 

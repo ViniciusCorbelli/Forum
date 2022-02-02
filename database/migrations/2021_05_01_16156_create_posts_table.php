@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->longText('abstract');
             $table->string('image')->default('post.png');
             $table->integer('views')->default('0');
+            $table->boolean('active')->default('0');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

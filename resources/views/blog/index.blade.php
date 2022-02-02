@@ -9,8 +9,10 @@
                     <li><a href="{{ route('blog.index') }}">Blog</a></li>
                 </ol>
             </div>
-            <h1> CompuTech </h1>
-            <p> Não foram encontrados resultados para sua pesquisa.</p>
+            <center>
+                <h1> CompuTech </h1>
+                <p> Não foram encontrados resultados para sua pesquisa.</p>
+            </center>
         @else
             <div class="row">
                 <div class="col-sm-8 pl-1 pr-1">

@@ -11,9 +11,9 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        $topPost = Post::orderBy('views', 'desc')->get();
-        $countPost = count(Post::all());
+        $posts = Post::where('active', '1')->orderBy('created_at', 'desc')->paginate(10);
+        $topPost = Post::where('active', '1')->orderBy('views', 'desc')->get();
+        $countPost = Post::where('active', '1')->count();
         return view('blog.index', compact('posts', 'topPost', 'countPost'));
     }
 
@@ -35,7 +35,7 @@ class BlogController extends Controller
 
     public function category(Category $category)
     {
-        $posts = Post::where('category_id', '=', $category->id)->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::where('category_id', '=', $category->id)->where('active', '1')->orderBy('created_at', 'desc')->paginate(10);
         return view('blog.category.view', compact('posts', 'category'));
     }
 
@@ -46,7 +46,7 @@ class BlogController extends Controller
 
     public function date($month, $year)
     {
-        $posts = Post::whereMonth('created_at', $month)->whereYear('created_at', $year)->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::whereMonth('created_at', $month)->whereYear('created_at', $year)->where('active', '1')->orderBy('created_at', 'desc')->paginate(10);
         $months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
         $month = $months[($month - 1)%12];
@@ -59,6 +59,7 @@ class BlogController extends Controller
         $posts = Post::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('message', 'LIKE', "%{$search}%")
+            ->where('active', '1')
             ->orderBy('created_at', 'desc')->get();
 
         return view('blog.search', compact('posts', 'search'));

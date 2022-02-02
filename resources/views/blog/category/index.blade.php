@@ -16,10 +16,10 @@
                     @foreach ($categories as $category)
                         <hr>
                         @php
-                            $lastPost = App\Post::where('category_id', '=', $category->id)
+                            $lastPost = App\Post::where('category_id', '=', $category->id)->where('active', '1')
                                 ->latest()
                                 ->first();
-                            $countPost = count(App\Post::where('category_id', '=', $category->id)->get());
+                            $countPost = App\Post::where('category_id', '=', $category->id)->where('active', '1')->count();
                         @endphp
                         <div class="row">
                             <div class="col-8">

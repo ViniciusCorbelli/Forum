@@ -93,10 +93,8 @@
                                             <a class="dropdown-item"
                                                 href="{{ route('profile.categories.index') }}"><i class="fas fa-chevron-right"></i> Categorias</a>
                                         @endif
-                                        @if (Auth::user()->access == 'Administrador' || Auth::user()->access == 'Autor')
                                             <a class="dropdown-item"
                                                 href="{{ route('profile.posts.index') }}"><i class="fas fa-chevron-right"></i> Publicações</a>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -107,6 +105,3 @@
         </ul>
     </div>
 </nav>
-
-
-@include('includes.chat')

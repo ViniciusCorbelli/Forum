@@ -29,9 +29,7 @@
                                     </Strong> </h6>
                             </div>
                             <div class="col-4 text-right">
-                                <p> {{ count(
-    App\Post::whereMonth('created_at', date('m', $month))->whereYear('created_at', date('Y', $month))->get(),
-) }}
+                                <p> {{ App\Post::whereMonth('created_at', date('m', $month))->whereYear('created_at', date('Y', $month))->where('active', '1')->count() }}
                                     postagens</p>
                             </div>
                         </div>
@@ -43,8 +41,8 @@
             </div>
             <div class="col-sm-4">
                 <div class="card-post">
-                    <a class="twitter-timeline" data-height="600" data-theme="light"
-                        href="https://twitter.com/Code_junior">Tweets por Code Empresa Júnior</a>
+                    <a class="twitter-timeline" data-height="600" data-theme="light" href="https://twitter.com/UFJF_">Tweets
+                        por UFJF</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>

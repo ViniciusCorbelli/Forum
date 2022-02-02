@@ -100,4 +100,10 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('profile.posts.index')->with('success', true);
     }
+
+    public function active(post $post)
+    {
+        $post->update(['active'=>1]);
+        return redirect()->route('profile.posts.index')->with('success', true);
+    }
 }

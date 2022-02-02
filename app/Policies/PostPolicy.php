@@ -30,7 +30,7 @@ class PostPolicy
      */
     public function view(User $user, Post $model) // show
     {
-        return ($user->id == $model->user_id || $user->access == "Administrador");
+        return ($user->id == $model->user_id || $user->access == "Administrador" || $user->access == "Moderador");
     }
 
     /**
@@ -53,7 +53,7 @@ class PostPolicy
      */
     public function update(User $user, Post $model) // edit e update
     {
-        return ($user->id == $model->user_id || $user->access == "Administrador");
+        return ($user->id == $model->user_id || $user->access == "Administrador" || $user->access == "Moderador");
     }
 
     /**
@@ -65,6 +65,11 @@ class PostPolicy
      */
     public function delete(User $user, Post $model)
     {
-        return ($user->id == $model->user_id || $user->access == "Administrador");
+        return ($user->id == $model->user_id || $user->access == "Administrador" || $user->access == "Moderador");
+    }
+
+    public function validate(User $user, Post $model)
+    {
+        return ($user->access == "Administrador" || $user->access == "Moderador");
     }
 }
