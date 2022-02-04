@@ -8,6 +8,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use App\CustomClasses\ColectionPaginate;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -73,7 +74,7 @@ class UserController extends Controller
 
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->name);
+            $slug = uniqid(date('HisYmd'));
             $nameFile = "{$slug}.{$extesion}";
             $request->image->storeAs('public/img/user', $nameFile);
             $data['image'] = $nameFile;
@@ -103,7 +104,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
         if (Auth::user() == null || Auth::user()->access != "Administrador") {
             $data = $request->except('access', 'confirmed');
@@ -112,10 +113,10 @@ class UserController extends Controller
         }
 
         $data = User::bcryptPassword($data);
-        
+
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->name);
+            $slug = uniqid(date('HisYmd'));
             $nameFile = "{$slug}.{$extesion}";
             $request->image->storeAs('public/img/user', $nameFile);
             $data['image'] = $nameFile;

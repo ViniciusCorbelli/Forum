@@ -20,7 +20,7 @@
                 <form method="POST" action="{{ route('register') }}" class="form-register">
                     @csrf
                     <div class="form-group">
-                        <label for="name">Nome</label>
+                        <label for="name" class="required">Nome </label>
 
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                             value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -32,7 +32,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail</label>
+                        <label for="email" class="required">E-mail </label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email">
 
@@ -43,7 +43,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label class="required" for="password">Senha</label>
+                        <label class="required" for="password">Senha </label>
                         <div class="input-group">
                             <span class="input-group-text" onclick="visiblePassword('password' ,'iconPassword')">
                                 <i class="fa fa-eye-slash" id='iconPassword'></i>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="required" for="password">Confirmar Senha</label>
+                        <label class="required" for="password">Confirmar Senha </label>
                         <div class="input-group">
                             <span class="input-group-text"
                                 onclick="visiblePassword('password-confirm' ,'iconConfirmedPassword')">
@@ -69,7 +69,7 @@
                                 required autocomplete="new-password">
                         </div>
                     </div>
-                    <div class="form-group">  
+                    <div class="form-group">
                         <label for="image">Imagem </label>
                         <input type="file" accept="image/*" class="form-control-file" name="image">
                     </div>

@@ -3,17 +3,18 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-sm form-center">
+            <div class="col-sm form-center text-center">
                 <div class="title">
                     <h1>Redefinir senha da sua conta</h1>
                 </div>
-                @if (session('status'))
+                <a class="btn btn-primary btn-lg" href="{{ route('site.contact') }}">Entre em contato com suas informações</a>
+                {{-- @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
-                @endif
+                @endif --}}
 
-                <form method="POST" action="{{ route('password.email') }}" class="form-register">
+                {{-- <form method="POST" action="{{ route('password.email') }}" class="form-register">
                     @csrf
 
                     <div class="form-group row">
@@ -40,7 +41,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>

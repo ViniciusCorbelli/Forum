@@ -43,7 +43,7 @@ class PostController extends Controller
         $data['user_id'] = Auth::user()->id;
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->title);
+            $slug = uniqid(date('HisYmd'));
             $nameFile = "{$slug}.{$extesion}";
             $request->image->storeAs('public/img/posts', $nameFile);
             $data['image'] = $nameFile;
@@ -78,7 +78,7 @@ class PostController extends Controller
         $data = $request->all();
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->title);
+            $slug = uniqid(date('HisYmd'));
             $nameFile = "{$slug}.{$extesion}";
             $request->image->storeAs('public/img/posts', $nameFile);
             $data['image'] = $nameFile;

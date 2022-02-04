@@ -69,7 +69,7 @@
                                 <div class="col=6">
                                     <div class="text-center">
                                         <a href="{{ route('profile.users.show', Auth::user()->id) }}">
-                                            <h1>{{ Auth::user()->name }}</h1>
+                                            <h1>{{ Auth::user()->firstName }}</h1>
                                         </a>
                                         <h2>{{ Auth::user()->access }}</h2>
                                         <a href="{{ route('profile.users.show', Auth::user()->id) }}">Página de

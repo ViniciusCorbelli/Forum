@@ -19,7 +19,7 @@
                         <p class="form-msg">Faça o login para iniciar sua sessão</p>
                     @endif
                     <div class="form-group row">
-                        <label for="email">E-mail</label>
+                        <label for="email" class="required">E-mail </label>
 
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="password">{{ __('Password') }}</label>
+                        <label for="password" class="required">{{ __('Password') }} </label>
 
                         <div class="input-group">
                             <span class="input-group-text" onclick="visiblePassword('password' ,'iconPassword')">

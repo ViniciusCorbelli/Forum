@@ -37,8 +37,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getFirstNameAttribute() {
+        return collect(explode(' ', $this->name))->slice(0, 1)->implode(' ');
+    }
+
     public static function bcryptPassword($data){
-        $data['password'] = bcrypt($data['password']);
-        return $data;
+        if(isset($data['password']) && !empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+            return $data;
+        }
     }
 }
